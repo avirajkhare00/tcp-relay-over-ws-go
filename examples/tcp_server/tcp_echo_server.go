@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"os"
 )
 
 func main() {
@@ -18,6 +19,7 @@ func main() {
 	conn, err := listener.Accept()
 	if err != nil {
 		fmt.Printf("Unable to accept: %s", err)
+		os.Exit(1)
 	}
 
 	incomingMsg := make([]byte, 1024)
@@ -26,11 +28,13 @@ func main() {
 	_, err = conn.Read(incomingMsg)
 	if err != nil {
 		fmt.Printf("Unable to read message %s", err)
+		os.Exit(1)
 	}
 
 	//send message back to client
 	_, err = conn.Write(incomingMsg)
 	if err != nil {
 		fmt.Printf("Unable to send message to client: %s", err)
+		os.Exit(1)
 	}
 }
