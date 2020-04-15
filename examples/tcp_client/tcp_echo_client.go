@@ -39,4 +39,7 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Printf("data received: %s", string(buf))
+
+	//closing the connection
+	conn.Close()
 }

@@ -37,4 +37,7 @@ func main() {
 		fmt.Printf("Unable to send message to client: %s", err)
 		os.Exit(1)
 	}
+
+	//close the connection
+	conn.Close()
 }
